@@ -1,0 +1,27 @@
+# systemd unit for a Raspberry Pi / VPS (runs 24/7).
+#   sudo cp deploy/passvault-bot.service /etc/systemd/system/
+#   (edit User= and the /opt/passvault paths)
+#   sudo systemctl daemon-reload && sudo systemctl enable --now passvault-bot
+#   journalctl -u passvault-bot -f
+[Unit]
+Description=PassVault Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=passvault
+WorkingDirectory=/opt/passvault/bot
+ExecStart=/opt/passvault/bot/.venv/bin/python bot.py
+Restart=always
+RestartSec=15
+
+# Hardening: the bot only needs its own folder and the network
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/passvault/bot
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

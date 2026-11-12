@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Run the bot on your Mac at login and restart it if it crashes.
+  1. Replace /PATH/TO/PassVault with the real folder (e.g. /Users/you/Desktop/Projects/PassVault).
+  2. cp deploy/com.passvault.bot.plist ~/Library/LaunchAgents/
+  3. launchctl load ~/Library/LaunchAgents/com.passvault.bot.plist
+  Stop:  launchctl unload ~/Library/LaunchAgents/com.passvault.bot.plist
+  Note: it only runs while the Mac is awake. For 24/7 use a Raspberry Pi / VPS (systemd file next to this one).
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.passvault.bot</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/PATH/TO/PassVault/bot/.venv/bin/python</string>
+        <string>/PATH/TO/PassVault/bot/bot.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/PATH/TO/PassVault/bot</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+    <key>StandardOutPath</key>
+    <string>/PATH/TO/PassVault/bot/bot.log</string>
+    <key>StandardErrorPath</key>
+    <string>/PATH/TO/PassVault/bot/bot.log</string>
+</dict>
+</plist>
