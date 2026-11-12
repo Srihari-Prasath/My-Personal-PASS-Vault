@@ -1,0 +1,32 @@
+# OS / editors
+.DS_Store
+*.swp
+.vscode/
+
+# Android / Gradle (see also android/.gitignore)
+android/.idea/
+android/.gradle/
+android/.kotlin/
+android/build/
+android/app/build/
+android/local.properties
+android/captures/
+*.iml
+
+# Signing secrets – never commit
+keystore.properties
+*.jks
+*.keystore
+
+# Vault backups / exports – never commit
+*.pvlt
+*.csv
+passvault-emergency-kit*.pdf
+
+# Bot server secrets and data
+bot/.env
+bot/.venv/
+bot/*.sqlite3
+bot/*.log
+__pycache__/
+.pytest_cache/
