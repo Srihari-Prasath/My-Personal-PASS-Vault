@@ -1,0 +1,25 @@
+*.iml
+.gradle
+/local.properties
+local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+.kotlin/
+
+# Signing secrets – never commit
+keystore.properties
+*.jks
+*.keystore
+
+# Never commit vault exports / backups
+*.pvlt

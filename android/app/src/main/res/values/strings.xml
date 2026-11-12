@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">PassVault</string>
+    <string name="widget_description">Lock your vault or generate a password in one tap</string>
+    <string name="autofill_label">PassVault</string>
+</resources>
