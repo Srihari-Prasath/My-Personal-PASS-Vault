@@ -19,7 +19,7 @@ gson = "2.10.1"
 bouncycastle = "1.78.1"
 workRuntime = "2.11.2"
 camerax = "1.4.1"
-zxing = "3.5.3"
+zxing = "3.5.4"
 junit = "4.13.2"
 
 [libraries]
