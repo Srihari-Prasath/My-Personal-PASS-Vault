@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="PassVault — your passwords, encrypted, on your phone">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#14104A">
+        <animate attributeName="stop-color" values="#14104A;#231C7A;#0F1A3A;#14104A" dur="12s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#0B2A47">
+        <animate attributeName="stop-color" values="#0B2A47;#0E3B66;#1B1450;#0B2A47" dur="12s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B85FF"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#8B85FF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8B85FF" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="typing">
+      <rect x="420" y="168" height="52" width="0">
+        <animate attributeName="width" values="0;700;700;0" keyTimes="0;0.4;0.9;1" dur="9s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="300" rx="28" fill="url(#bg)"/>
+
+  <!-- drifting particles -->
+  <g fill="#FFFFFF">
+    <circle cx="90" cy="260" r="2.5" opacity="0.5"><animate attributeName="cy" values="260;40;260" dur="14s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.6;0" dur="14s" repeatCount="indefinite"/></circle>
+    <circle cx="340" cy="60" r="2" opacity="0.4"><animate attributeName="cy" values="60;250;60" dur="17s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.5;0" dur="17s" repeatCount="indefinite"/></circle>
+    <circle cx="760" cy="270" r="3" opacity="0.4"><animate attributeName="cy" values="270;30;270" dur="19s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.5;0" dur="19s" repeatCount="indefinite"/></circle>
+    <circle cx="1010" cy="50" r="2" opacity="0.5"><animate attributeName="cy" values="50;240;50" dur="13s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.6;0" dur="13s" repeatCount="indefinite"/></circle>
+    <circle cx="1130" cy="200" r="2.5" opacity="0.4"><animate attributeName="cy" values="200;20;200" dur="16s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.5;0" dur="16s" repeatCount="indefinite"/></circle>
+    <circle cx="560" cy="30" r="1.8" opacity="0.4"><animate attributeName="cy" values="30;270;30" dur="21s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.5;0" dur="21s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <!-- shield with a breathing glow and an expanding ring -->
+  <g transform="translate(230 150)">
+    <circle r="110" fill="url(#glow)">
+      <animate attributeName="r" values="95;120;95" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="78" fill="none" stroke="#8B85FF" stroke-width="2" opacity="0">
+      <animate attributeName="r" values="70;125" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;0" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 -6;0 0" dur="4s" repeatCount="indefinite"/>
+      <path d="M0,-78 L62,-56 L62,-6 C62,38 35,70 0,82 C-35,70 -62,38 -62,-6 L-62,-56 Z" fill="url(#shield)"/>
+      <path d="M0,-78 L62,-56 L62,-6 C62,38 35,70 0,82 Z" fill="#FFFFFF" opacity="0.08"/>
+      <!-- keyhole -->
+      <circle cx="0" cy="-8" r="15" fill="#14104A"/>
+      <path d="M-7,0 L7,0 L11,32 L-11,32 Z" fill="#14104A"/>
+    </g>
+  </g>
+
+  <!-- title -->
+  <text x="420" y="138" font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="76" font-weight="800" fill="#FFFFFF" letter-spacing="-1">PassVault</text>
+
+  <!-- typed tagline -->
+  <g clip-path="url(#typing)">
+    <text x="422" y="205" font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#C9C6FF">Your passwords. Encrypted. On your phone.</text>
+  </g>
+  <rect x="422" y="180" width="3" height="32" fill="#C9C6FF">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="422;1112;1112;422" keyTimes="0;0.4;0.9;1" dur="9s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- chips -->
+  <g font-family="Segoe UI, Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" font-weight="600">
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" begin="0.3s" dur="0.8s" fill="freeze"/>
+      <rect x="422" y="236" width="138" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="491" y="257" text-anchor="middle" fill="#FFFFFF">AES-256-GCM</text>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" begin="0.6s" dur="0.8s" fill="freeze"/>
+      <rect x="572" y="236" width="110" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="627" y="257" text-anchor="middle" fill="#FFFFFF">Argon2id</text>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" begin="0.9s" dur="0.8s" fill="freeze"/>
+      <rect x="694" y="236" width="196" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="792" y="257" text-anchor="middle" fill="#FFFFFF">Telegram backups</text>
+    </g>
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;1" begin="1.2s" dur="0.8s" fill="freeze"/>
+      <rect x="902" y="236" width="150" height="32" rx="16" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="977" y="257" text-anchor="middle" fill="#FFFFFF">No cloud account</text>
+    </g>
+  </g>
+</svg>
