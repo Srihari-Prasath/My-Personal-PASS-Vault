@@ -9,6 +9,7 @@
   <img alt="Encryption" src="https://img.shields.io/badge/Encryption-AES--256--GCM%20%2B%20Argon2id-4F46E5"/>
   <img alt="Backups" src="https://img.shields.io/badge/Backups-Telegram%20bot-26A5E4?logo=telegram&logoColor=white"/>
   <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Srihari-Prasath/My-Personal-PASS-Vault?label=release&color=4F46E5"/></a>
+  <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/actions/workflows/ci.yml/badge.svg"/></a>
 </p>
 
 <p align="center">
