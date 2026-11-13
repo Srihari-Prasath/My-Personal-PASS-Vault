@@ -36,12 +36,27 @@ jobs:
       - name: Restore signing key
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
           if [ -z "$KEYSTORE_BASE64" ]; then
             echo "::error::Repository secret KEYSTORE_BASE64 is missing (see README → Releases)."
             exit 1
           fi
-          echo "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/release.jks"
+          # Pasted secrets often pick up spaces, line breaks or quotes — strip them before decoding
+          printf '%s' "$KEYSTORE_BASE64" | tr -d ' \r\n\t"' > "$RUNNER_TEMP/keystore.b64"
+          if ! base64 --decode "$RUNNER_TEMP/keystore.b64" > "$RUNNER_TEMP/release.jks" 2>/dev/null; then
+            echo "::error::KEYSTORE_BASE64 isn't valid base64. Re-copy it with: base64 -i release.jks | pbcopy"
+            exit 1
+          fi
+          rm -f "$RUNNER_TEMP/keystore.b64"
+          # Safe to print: a fingerprint of the file, not the key. Compare with: shasum -a 256 android/release.jks
+          echo "Keystore SHA-256: $(sha256sum "$RUNNER_TEMP/release.jks" | cut -d' ' -f1)"
+          if ! keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" > /dev/null 2>&1; then
+            echo "::error::Keystore decoded, but KEYSTORE_PASSWORD or KEY_ALIAS doesn't match it (alias should be 'passvault')."
+            exit 1
+          fi
+          echo "Signing key OK"
           echo "PASSVAULT_KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
 
       - name: Unit tests
