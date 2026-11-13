@@ -33,6 +33,8 @@ data class AppSettings(
     val googleSyncReminders: Boolean = true,
     /** Ask for fingerprint / screen lock before showing or copying a secret (even while unlocked). */
     val revealNeedsAuth: Boolean = false,
+    /** Debug builds only: lift the screenshot block so I can take screenshots for the README. */
+    val allowScreenshots: Boolean = false,
 )
 
 /** Everything the background reminder check needs, read fresh from disk (the worker may run in a new process). */
@@ -82,10 +84,12 @@ class SettingsRepository @Inject constructor(
             passwordReminders = p[PW_REMINDERS] ?: true,
             googleSyncReminders = p[GOOGLE_SYNC_REMINDERS] ?: true,
             revealNeedsAuth = p[REVEAL_NEEDS_AUTH] ?: false,
+            allowScreenshots = p[ALLOW_SCREENSHOTS] ?: false,
         )
     }.stateIn(scope, SharingStarted.Eagerly, AppSettings())
 
     suspend fun setRevealNeedsAuth(on: Boolean) = store.edit { it[REVEAL_NEEDS_AUTH] = on }
+    suspend fun setAllowScreenshots(on: Boolean) = store.edit { it[ALLOW_SCREENSHOTS] = on }
 
     suspend fun setGoogleSyncReminders(on: Boolean) = store.edit { it[GOOGLE_SYNC_REMINDERS] = on }
     suspend fun recordGoogleSync() = store.edit { it[LAST_GOOGLE_SYNC_AT] = System.currentTimeMillis() }
@@ -252,6 +256,7 @@ class SettingsRepository @Inject constructor(
         val NOTIF_ASKED = booleanPreferencesKey("notification_permission_asked")
         val GOOGLE_SYNC_REMINDERS = booleanPreferencesKey("google_sync_reminders")
         val REVEAL_NEEDS_AUTH = booleanPreferencesKey("reveal_needs_auth")
+        val ALLOW_SCREENSHOTS = booleanPreferencesKey("allow_screenshots_debug")
         val LAST_GOOGLE_SYNC_AT = longPreferencesKey("last_google_sync_at")
         val LAST_GOOGLE_SYNC_REMINDER_AT = longPreferencesKey("last_google_sync_reminder_at")
         const val PASSWORD_EVERY_MS = 7L * 24 * 60 * 60 * 1000

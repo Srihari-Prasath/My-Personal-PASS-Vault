@@ -84,6 +84,7 @@ class SettingsViewModel @Inject constructor(
     // ---------- Fingerprint to reveal ----------
 
     fun setRevealNeedsAuth(on: Boolean) = viewModelScope.launch { settingsRepo.setRevealNeedsAuth(on) }
+    fun setAllowScreenshots(on: Boolean) = viewModelScope.launch { settingsRepo.setAllowScreenshots(on) }
 
     // ---------- Decoy vault ----------
 

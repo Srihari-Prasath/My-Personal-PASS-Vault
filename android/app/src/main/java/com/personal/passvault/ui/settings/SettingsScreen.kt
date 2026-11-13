@@ -16,6 +16,7 @@ import com.personal.passvault.work.ReminderWorker
 import com.personal.passvault.core.crypto.VaultKeyManager
 import com.personal.passvault.ui.components.ConfirmDialog
 import androidx.compose.material.icons.rounded.Print
+import androidx.compose.material.icons.rounded.Screenshot
 import androidx.compose.material.icons.rounded.TheaterComedy
 import androidx.compose.material.icons.rounded.EditNote
 import androidx.compose.material.icons.rounded.GppGood
@@ -303,6 +304,15 @@ fun SettingsScreen(
                     Icons.Rounded.Info, "PassVault ${BuildConfig.VERSION_NAME}",
                     "AES-256-GCM · Argon2id (45 MiB, 2 passes) · SQLCipher database · keys in Android Keystore. Your data never leaves this phone.",
                 )
+                // Debug builds only — release builds always block screenshots
+                if (BuildConfig.DEBUG) {
+                    SettingRow(
+                        Icons.Rounded.Screenshot, "Allow screenshots (debug build)",
+                        "For README screenshots. Use a test vault — release builds always block screenshots.",
+                        tint = MaterialTheme.colorScheme.tertiary,
+                        trailing = { Switch(checked = s.allowScreenshots, onCheckedChange = { vm.setAllowScreenshots(it) }) },
+                    )
+                }
             }
         }
     }

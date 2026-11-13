@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -48,6 +49,12 @@ class MainActivity : FragmentActivity() {
                 ThemeMode.SYSTEM -> isSystemInDarkTheme()
                 ThemeMode.LIGHT -> false
                 ThemeMode.DARK, ThemeMode.AMOLED -> true
+            }
+            // Screenshot block stays on in release builds no matter what is saved in settings
+            val allowScreenshots = BuildConfig.DEBUG && settings.allowScreenshots
+            LaunchedEffect(allowScreenshots) {
+                if (allowScreenshots) window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
+                else window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
             }
             DisposableEffect(dark) {
                 val style = if (dark) SystemBarStyle.dark(Color.TRANSPARENT)
