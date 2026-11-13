@@ -1,9 +1,25 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
 }
+
+// Release signing: local builds read android/keystore.properties (never committed),
+// GitHub Actions passes the same values as environment variables.
+val keystoreProps = Properties().apply {
+    val f = rootProject.file("keystore.properties")
+    if (f.exists()) f.inputStream().use { load(it) }
+}
+fun signing(prop: String, env: String): String? = keystoreProps.getProperty(prop) ?: System.getenv(env)
+val releaseStoreFile = signing("storeFile", "PASSVAULT_KEYSTORE_PATH")
+
+// Version: "1.2.3" -> versionCode 10203, so every release can install over the previous one.
+val appVersionName = System.getenv("PASSVAULT_VERSION_NAME") ?: "1.0.0"
+val appVersionCode = appVersionName.split(".").map { it.toIntOrNull() ?: 0 }
+    .let { (it.getOrElse(0) { 0 } * 10000) + (it.getOrElse(1) { 0 } * 100) + it.getOrElse(2) { 0 } }
 
 android {
     namespace = "com.personal.passvault"
@@ -13,9 +29,20 @@ android {
         applicationId = "com.personal.passvault"
         minSdk = 28
         targetSdk = 36
-        versionCode = 1
-        versionName = "0.1.0"
+        versionCode = appVersionCode
+        versionName = appVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        if (releaseStoreFile != null) {
+            create("release") {
+                storeFile = rootProject.file(releaseStoreFile)
+                storePassword = signing("storePassword", "PASSVAULT_KEYSTORE_PASSWORD")
+                keyAlias = signing("keyAlias", "PASSVAULT_KEY_ALIAS")
+                keyPassword = signing("keyPassword", "PASSVAULT_KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
@@ -26,9 +53,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            // Debug signing so you can install a fast release build on your own phone.
-            // Swap for a real signing config before ever distributing it.
-            signingConfig = signingConfigs.getByName("debug")
+            // Real release key when it's configured; otherwise the debug key, so a release
+            // build can still be installed on my own phone for testing.
+            signingConfig = if (releaseStoreFile != null) signingConfigs.getByName("release")
+            else signingConfigs.getByName("debug")
         }
     }
 

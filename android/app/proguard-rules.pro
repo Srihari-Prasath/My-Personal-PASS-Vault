@@ -15,6 +15,13 @@
 -keep class com.personal.passvault.domain.CardData { *; }
 -keep class com.personal.passvault.domain.WifiData { *; }
 -dontwarn com.google.zxing.**
+
+# Optional platform classes referenced by libraries but not present on Android
+-dontwarn javax.naming.**
+-dontwarn org.slf4j.**
+-dontwarn org.conscrypt.**
+-dontwarn org.openjsse.**
+-dontwarn org.bouncycastle.jsse.**
 -keepattributes Signature, *Annotation*
 
 # BouncyCastle – we only use the Argon2 lightweight API
