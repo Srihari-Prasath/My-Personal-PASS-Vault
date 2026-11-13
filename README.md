@@ -10,6 +10,7 @@
   <img alt="Backups" src="https://img.shields.io/badge/Backups-Telegram%20bot-26A5E4?logo=telegram&logoColor=white"/>
   <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Srihari-Prasath/My-Personal-PASS-Vault?label=release&color=4F46E5"/></a>
   <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/actions/workflows/ci.yml/badge.svg"/></a>
+  <a href="LICENSE"><img alt="License: all rights reserved" src="https://img.shields.io/badge/license-all%20rights%20reserved-lightgrey"/></a>
 </p>
 
 <p align="center">
@@ -271,5 +272,10 @@ Before trusting it with real passwords I run a **disaster drill**: add a few tes
 
 This is my personal project. It uses standard, well-reviewed cryptography, but it hasn't had an independent security audit.
 If you use it for your own passwords: keep the emergency kit, test a restore, and never forget the master password — **it cannot be recovered**.
+
+## 📄 License
+
+© 2026 Srihari Prasath — **all rights reserved**. The code is public so you can read it and download the official
+releases for personal use; copying, modifying or redistributing it needs my permission. See [LICENSE](LICENSE).
 
 <p align="center">Built by <a href="https://github.com/Srihari-Prasath">Srihari Prasath</a></p>
