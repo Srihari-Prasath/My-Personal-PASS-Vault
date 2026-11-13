@@ -1,0 +1,74 @@
+name: Bug report
+description: Something isn't working as expected
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this!
+        **Never paste real passwords, recovery codes, bot tokens or backup files here.**
+        Security problems → please use *Security → Report a vulnerability* instead.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect, and what happened instead?
+      placeholder: "I tapped Back up now and…"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open …
+        2. Tap …
+        3. See …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Unlock / fingerprint
+        - Vault list / search
+        - Add or edit an entry
+        - Password history
+        - 2FA codes / QR scanner
+        - Telegram backup / restore
+        - Import / sync from Google
+        - Autofill
+        - Security check
+        - Emergency kit
+        - Reminders / widget
+        - Bot server
+        - Something else
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: PassVault version
+      description: Settings → About
+      placeholder: "1.0.0"
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Phone and Android version
+      placeholder: "Pixel 8, Android 15"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Anything else?
+      description: Error messages or extra context. Remove anything personal first.
