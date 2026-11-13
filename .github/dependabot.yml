@@ -1,0 +1,33 @@
+version: 2
+updates:
+  # Android app (Gradle + version catalog)
+  - package-ecosystem: gradle
+    directory: /android
+    schedule:
+      interval: weekly
+      day: saturday
+    open-pull-requests-limit: 5
+    groups:
+      androidx:
+        patterns: ["androidx.*"]
+      kotlin-and-build:
+        patterns: ["org.jetbrains.kotlin*", "com.android*", "com.google.devtools.ksp*", "com.google.dagger*"]
+    commit-message:
+      prefix: "deps"
+
+  # Bot server
+  - package-ecosystem: pip
+    directory: /bot
+    schedule:
+      interval: weekly
+      day: saturday
+    commit-message:
+      prefix: "deps(bot)"
+
+  # GitHub Actions used by the workflows
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: "ci"
