@@ -8,6 +8,13 @@
   <img alt="Jetpack Compose" src="https://img.shields.io/badge/Jetpack%20Compose-Material%203-4285F4?logo=jetpackcompose&logoColor=white"/>
   <img alt="Encryption" src="https://img.shields.io/badge/Encryption-AES--256--GCM%20%2B%20Argon2id-4F46E5"/>
   <img alt="Backups" src="https://img.shields.io/badge/Backups-Telegram%20bot-26A5E4?logo=telegram&logoColor=white"/>
+  <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/Srihari-Prasath/My-Personal-PASS-Vault?label=release&color=4F46E5"/></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/releases/latest">
+    <img alt="Download the APK" src="https://img.shields.io/badge/Download-Android%20APK-3DDC84?style=for-the-badge&logo=android&logoColor=white"/>
+  </a>
 </p>
 
 <p align="center">
@@ -193,6 +200,23 @@ PassVault/
     ├── DESIGN.md             Full design & security notes
     └── assets/               README graphics
 ```
+
+---
+
+## 📥 Download
+
+Grab the latest signed APK from **[Releases](https://github.com/Srihari-Prasath/My-Personal-PASS-Vault/releases/latest)**.
+
+1. On your Android phone (Android 9 or newer), download `PassVault-vX.Y.Z.apk`.
+2. Open it and allow *Install unknown apps* for your browser when asked.
+3. Optional: check the file against `SHA256SUMS.txt` from the same release.
+
+Google Play Protect may warn about an app that isn't from the Play Store — that's expected for a sideloaded APK.
+Every release is signed with the same key, so new versions install over old ones and keep your vault.
+
+### How releases are made
+Pushing a tag like `v1.0.1` runs [`.github/workflows/release.yml`](.github/workflows/release.yml): it runs the unit tests,
+builds a signed, minified APK on GitHub, and publishes it with notes from [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

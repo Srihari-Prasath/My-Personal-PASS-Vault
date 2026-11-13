@@ -17,6 +17,23 @@ and [docs/DESIGN.md](../docs/DESIGN.md) for how it works inside.
    Release builds are minified and signed with the debug key so they can be installed on my own phone.
    Use a real signing config before distributing anything.
 
+## Release signing
+Release builds use my own key when one is configured, and fall back to the debug key otherwise.
+
+- **Local:** create `android/keystore.properties` (ignored by git):
+  ```properties
+  storeFile=release.jks
+  storePassword=…
+  keyAlias=passvault
+  keyPassword=…
+  ```
+- **GitHub Actions:** the release workflow reads the repository secrets `KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`,
+  `KEY_ALIAS` and `KEY_PASSWORD`.
+- The version comes from the git tag (`v1.2.3` → versionName `1.2.3`, versionCode `10203`).
+
+Keep `release.jks` and its passwords safe and backed up — without the same key, future versions can't be installed
+over the old one.
+
 ## Tests
 ```bash
 ./gradlew :app:testDebugUnitTest
