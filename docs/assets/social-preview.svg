@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1B1460"/>
+      <stop offset="100%" stop-color="#0B2A47"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8B85FF"/>
+      <stop offset="100%" stop-color="#4F46E5"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#8B85FF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8B85FF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- subtle dots -->
+  <g fill="#FFFFFF" opacity="0.35">
+    <circle cx="80" cy="90" r="2.5"/><circle cx="1180" cy="80" r="2"/><circle cx="640" cy="40" r="1.8"/>
+    <circle cx="1220" cy="560" r="2.5"/><circle cx="70" cy="560" r="2"/><circle cx="980" cy="600" r="1.8"/>
+    <circle cx="420" cy="590" r="2"/><circle cx="860" cy="70" r="2.2"/>
+  </g>
+
+  <!-- shield -->
+  <g transform="translate(300 320)">
+    <circle r="200" fill="url(#glow)"/>
+    <circle r="150" fill="none" stroke="#8B85FF" stroke-width="2" opacity="0.35"/>
+    <path d="M0,-130 L104,-94 L104,-10 C104,64 58,116 0,136 C-58,116 -104,64 -104,-10 L-104,-94 Z" fill="url(#shield)"/>
+    <path d="M0,-130 L104,-94 L104,-10 C104,64 58,116 0,136 Z" fill="#FFFFFF" opacity="0.08"/>
+    <circle cx="0" cy="-14" r="25" fill="#1B1460"/>
+    <path d="M-12,0 L12,0 L18,54 L-18,54 Z" fill="#1B1460"/>
+  </g>
+
+  <g font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="560" y="275" font-size="104" font-weight="800" fill="#FFFFFF" letter-spacing="-2">PassVault</text>
+    <text x="564" y="345" font-size="31" fill="#C9C6FF">Your passwords. Encrypted. On your phone.</text>
+
+    <g font-size="22" font-weight="600" fill="#FFFFFF">
+      <rect x="564" y="392" width="176" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="652" y="421" text-anchor="middle">AES-256-GCM</text>
+      <rect x="752" y="392" width="140" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="822" y="421" text-anchor="middle">Argon2id</text>
+      <rect x="904" y="392" width="240" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="1024" y="421" text-anchor="middle">Telegram backups</text>
+
+      <rect x="564" y="448" width="150" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="639" y="477" text-anchor="middle">2FA codes</text>
+      <rect x="726" y="448" width="214" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="833" y="477" text-anchor="middle">Password history</text>
+      <rect x="952" y="448" width="150" height="44" rx="22" fill="#FFFFFF" fill-opacity="0.13"/>
+      <text x="1027" y="477" text-anchor="middle">Android</text>
+    </g>
+  </g>
+</svg>
